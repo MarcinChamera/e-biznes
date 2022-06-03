@@ -15,5 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker image build -t marcinchamera/zadanie1-image:v1
+#       run: docker image build -t marcinchamera/zadanie1-image:v1
 #       run: docker build . --file Dockerfile --tag marcinchamera/zadanie1-image:v1
+      run: docker build -f Dockerfile -t marcinchamera/zadanie1-image:v1 .
