@@ -17,4 +17,5 @@ jobs:
     - name: Build the Docker image
 #       run: docker image build -t marcinchamera/zadanie1-image:v1
 #       run: docker build . --file Dockerfile --tag marcinchamera/zadanie1-image:v1
-      run: docker build -f Dockerfile -t marcinchamera/zadanie1-image:v1 .
+#       run: docker build -f Dockerfile -t marcinchamera/zadanie1-image:v1 .
+      run: docker build -f zadanie1/Dockerfile -t marcinchamera/zadanie1-image:v1
