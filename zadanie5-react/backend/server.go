@@ -28,6 +28,17 @@ func main() {
 		return c.JSON(http.StatusOK, products)
 	})
 
+	e.GET("/products/:id", func(c echo.Context) error {
+		id := c.Param("id")
+		var product models.Product
+
+		if result := db.First(&product, id); result.Error != nil {
+			return c.String(http.StatusNotFound, "Database Error")
+		}
+
+		return c.JSON(http.StatusOK, product)
+	})
+
 	// curl -v -d "{""name"": ""PlayStation 5"", ""price"":3500, ""image_url"":""https://images.morele.net/full/5944164_0_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
 	// curl -v -d "{""name"": ""Iphone 13"", ""price"":5000, ""image_url"":""https://images.morele.net/full/9059212_0_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
 	// curl -v -d "{""name"": ""Monitor Samsung Odyssey G7"", ""price"":2500, ""image_url"":""https://images.morele.net/full/8326769_0_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products

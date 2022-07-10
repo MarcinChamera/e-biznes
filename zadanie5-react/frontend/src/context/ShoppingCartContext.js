@@ -1,26 +1,34 @@
-import React, {useState, createContext, useEffect} from "react";
+import React, { createContext } from "react";
 
 export const ShoppingCartContext = createContext({
-    shoppingCartProducts: [],
-    addToShoppingCart: () => {},
+    addToShoppingCart: () => {
+        // Intentionally blank
+    },
+    removeFromShoppingCart: () => {
+        // Intentionally blank
+    },
 });
 
 export const ShoppingCartContextProvider = ({children}) => {
-    const [shoppingCartProducts, setShoppingCartProducts] = useState([]);
 
     const addToShoppingCart = shoppingCartProduct => {
-        console.log("Adding ", shoppingCartProduct.Name, " to the shopping cart")
-        setShoppingCartProducts([...shoppingCartProducts, { ...shoppingCartProduct }])
-    };
+        const stringId = JSON.stringify(shoppingCartProduct.ID)
+        const productAlreadyInCart = localStorage.getItem(stringId)
+        if (productAlreadyInCart === null) {
+            localStorage.setItem(stringId, "1")
+        } else {
+            localStorage.setItem(stringId, JSON.stringify(parseInt(productAlreadyInCart) + 1))
+        }
+    }
 
-    useEffect(() => {
-        console.log("shoppingCartProducts:", shoppingCartProducts);
-    }, [shoppingCartProducts])
+    const removeFromShoppingCart = id => {
+        localStorage.removeItem(id);
+    }
 
     return (
         <ShoppingCartContext.Provider value={{
-            shoppingCartProducts, 
             addToShoppingCart,
+            removeFromShoppingCart
         }}>
             {children}
         </ShoppingCartContext.Provider>

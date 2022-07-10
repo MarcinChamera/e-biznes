@@ -1,16 +1,11 @@
 import React, { useContext } from "react";
-import { Card, CardContent, Typography, Container, Grid, Icon, CardMedia, Button } from "@mui/material";
+import { Card, CardContent, Typography, Container, Grid, CardMedia, Button } from "@mui/material";
 import { ProductsContext } from "../context/ProductsContext";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 const Products = () => {
     const { products } = useContext(ProductsContext)
     const { addToShoppingCart } = useContext(ShoppingCartContext)
-
-    function addToShoppingCartHandler(product) {
-        addToShoppingCart(product)
-        // console.log("Added to the shopping cart: ", product.Name)
-    }
 
     return (
         <Container>

@@ -3,13 +3,14 @@ import { AppBar, IconButton, Link, Toolbar, Typography } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => {
+
     return (
         <header>
             <AppBar>
                 <Toolbar>
                     <Typography>
                         <Link sx={{color:"white"}} href="/products">
-                            Sklep bez nazwy
+                            Nameless Shop
                         </Link>
                     </Typography>
                     <div>
