@@ -37,7 +37,7 @@ const Login = () => {
                     <GithubLoginButton onClick={redirectGithub}/>
                 </Grid>
                 <Grid item sm={4}>
-                    <FacebookLoginButton onClick={() => alert("Jeszcze niedostępne")}/>
+                    <FacebookLoginButton onClick={redirectFacebook}/>
                 </Grid>
             </Grid>
         </Container>

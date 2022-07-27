@@ -62,9 +62,7 @@ func main() {
 		ClientID:     os.Getenv("FACEBOOK_CLIENT_ID"),
 		ClientSecret: os.Getenv("FACEBOOK_CLIENT_SECRET"),
 		Scopes: []string{
-			"user:email",
-			"read:user",
-			// "email"
+			"email",
 		},
 		Endpoint: facebook.Endpoint,
 	}
@@ -261,7 +259,7 @@ func main() {
 
 		newToken := generateNewToken(40)
 
-		c.Redirect(http.StatusFound, "http://localhost:3000/login/auth/facebook/success/"+newToken+"&"+user.Email)
+		c.Redirect(http.StatusFound, "http://localhost:3000/login/auth/facebook/success/"+newToken+"&"+user.Email+"&"+strconv.Itoa(int(userFromGet.ID)))
 
 		return c.JSON(http.StatusOK, echo.Map{
 			"token": newToken,
